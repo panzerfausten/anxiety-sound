@@ -16,6 +16,9 @@ for _dataLine in __DATA:
                 _newline = "     <div id='div_title'> Prueba %s/20</div>" % (_dataLine[0])
                 print _newline
                 _NEWFILECONTENT.append(_newline)
+            elif("+" in _line[0] ):
+                _newline = "<div id='big_number'> %s </div> " % (_line[0])
+                _NEWFILECONTENT.append(_newline)
             elif("**" in _line[0:2] ):
                 _newline = "                      window.location = '%s.html';" %( str ( int ( _dataLine[0])+1) )
                 _NEWFILECONTENT.append(_newline)
