@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+    <body>
+
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
+        <script src="https://raw.githubusercontent.com/stuartmemo/theresas-sound-world/master/dist/tsw.min.js"></script>
+	<script src="jquery-2.1.3.min.js"></script>
+	<style>
+		body{
+			background:#7FA1E5;
+			font-family: 'Open Sans', sans-serif;
+			font-size:24px;
+		}
+		body header{
+			padding-left:25px;
+			padding-right:25px;
+			padding-top:5px;
+			text-align: justify;
+		}	
+		#formulario{
+			background:#D2DFFA;
+			width:700px;
+			height:600px;
+			margin-left:auto;
+			margin-right:auto;
+			margin-top:100px;
+		}
+		#play_button{
+			height:40px; 
+			width:100px; 
+			margin: -20px -50px; 
+			position:relative;
+			top:50%; 
+			left:50%;
+		}
+		#respuesta{
+			height:100px; 
+			width:100%; 
+			margin-left:auto;
+			margin-right:auto;
+			text-align:center;
+			margin-top:200px;
+
+		}
+		#formulario #div_title{
+			background:white;
+			padding-left:5px;
+		}
+	</style>
+
+	<div id="formulario">
+     <div id='div_title'> Prueba 1/20</div>	</br>
+	<header> A continuacion escucharas 3 sonidos. Al final de cada reproduccion, se te preguntara si el <b>primer</b> sonido fue igual al <b>ultimo</b>.</header>
+	</br>
+<header>Solo los podras escuchar una vez, asi que presta atencion.</header>
+               <button id='play_button' onclick='play_sounds(keyNoteToFreq(40),keyNoteToFreq(44),keyNoteToFreq(40))'>Reproducir </button>		<div id="respuesta">
+			<header> Fue el mismo sonido? </header>
+			<button id="awn_yes" class="awn_button" text="yes">SI</button>
+			<button id="awn_yes" class= "awn_button" text="no">NO</button>
+			<button id="awn_notsure" class="awn_button"  text="no">No estoy seguro</button>
+			</div>
+	</div>
+
+
+        <script>
+		function keyNoteToFreq(note){
+			n = (note - 49 )/12;
+			return Math.pow(2,n) * 440;
+		}
+		console.log ( keyNoteToFreq(49));
+		$("#respuesta").hide();	
+		function play_sounds(sound_a,sound_b, sound_c){
+			$("#play_button").hide(100);
+		var osc = tsw.osc(sound_a, 'sawoff'),
+		volume = tsw.gain(0.11); // Half volume.
+		tsw.connect(osc, volume, tsw.speakers);
+		//osc.frequency(sound_a);
+		osc.start() ;
+		setTimeout(function (){
+			osc.frequency(0);
+		},1000);
+
+		setTimeout(function (){
+			//osc.stop();
+
+			osc.frequency(sound_b);
+		},1500);
+
+		setTimeout(function (){
+			osc.frequency(0);
+		},2500);
+		setTimeout(function (){
+			osc.frequency(sound_c);
+		},3000);
+	
+
+		setTimeout(function (){
+			osc.stop();
+			$("#respuesta").show(300);
+		},4000);
+};
+		//respuestas
+		$(".awn_button").click(function (){
+                      window.location = '2.html';		});
+        </script>
+    </body>
+</html>
