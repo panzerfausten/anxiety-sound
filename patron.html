@@ -65,6 +65,8 @@
 
 
         <script>
+
+		var _INIT_TIME;
 		function keyNoteToFreq(note){
 			n = (note - 49 )/12;
 			return Math.pow(2,n) * 440;
@@ -72,6 +74,7 @@
 		console.log ( keyNoteToFreq(49));
 		$("#respuesta").hide();	
 		function play_sounds(sound_a,sound_b, sound_c){
+			_INIT_TIME = getTime();
 			$("#play_button").hide(100);
 		var osc = tsw.osc(sound_a, 'sawoff'),
 		volume = tsw.gain(0.11); // Half volume.
@@ -103,8 +106,24 @@
 };
 		//respuestas
 		$(".awn_button").click(function (){
+			var _END_TIME = getTime();
+			console.log(_INIT_TIME);
+			console.log(_END_TIME);
+
 ** 			window.location = "2.html";
 		});
+
+		function getTime(){
+			var d = new Date();
+			var _year = d.getYear() + 1900;
+			var _month = d.getMonth() + 1 ;
+			var _day = d.getDate();
+			var _hours = d.getHours();
+			var _minutes = d.getMinutes();
+			var _seconds = d.getSeconds();
+			var _miliseconds = d.getMilliseconds();
+			return _year + "-" + _month +"-"+ _day + " " + _hours + ":" + _minutes + ":"+_seconds + "." + _miliseconds;
+		};
         </script>
     </body>
 </html>

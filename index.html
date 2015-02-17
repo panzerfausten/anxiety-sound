@@ -50,8 +50,12 @@
         <script>
 		
 		function play_sounds(sound_a,sound_b, sound_c){
+			var _INIT_TIME = getTime();
 			$("#play_button").hide(100);
-		var osc = tsw.osc(sound_a, 'sawoff'),
+		
+			
+			var osc = tsw.osc(sound_a, 'sawoff'),
+		
 		volume = tsw.gain(0.11); // Half volume.
 		tsw.connect(osc, volume, tsw.speakers);
 		osc.frequency(sound_a);
