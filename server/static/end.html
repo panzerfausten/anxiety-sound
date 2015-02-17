@@ -1,4 +1,8 @@
 <!doctype html>
+
+<head>
+	<meta charset="utf-8" />
+</head>
 <html>
     <body>
 
@@ -14,7 +18,7 @@
 		body header{
 			padding-left:25px;
 			padding-right:25px;
-			padding-top:3px;
+			padding-top:5px;
 			text-align: justify;
 		}	
 		#formulario{
@@ -30,7 +34,7 @@
 			width:100px; 
 			margin: -20px -50px; 
 			position:relative;
-			top:35%; 
+			top:50%; 
 			left:50%;
 		}
 		#respuesta{
@@ -47,20 +51,16 @@
 			padding-left:5px;
 		}
 		#big_number{
-			font-size:155px;
-			text-align: center;
 		}
 	</style>
 
 	<div id="formulario">
-     <div id='div_title'> Prueba 4/20</div>	</br>
-<div id='big_number'> 4 </div> 	</br>
-               <button id='play_button' onclick='play_sounds(keyNoteToFreq(44),keyNoteToFreq(47),keyNoteToFreq(51))'>Reproducir </button>		<div id="respuesta">
-			<header> Fue el mismo sonido? </header>
-			<button id="awn_yes" class="awn_button" text="yes" >SI</button>
-			<button id="awn_no" class= "awn_button" text="no">NO</button>
-			<button id="awn_notsure" class="awn_button"  text="no">No estoy seguro</button>
-			</div>
+	<div id="div_title"> Prueba terminada.</div>
+	</br>
+	<header>¡Gracias por participar en este experimento!</header>
+	</br>
+		<header>Ahora puedes reclamar tu premio.</header>
+		<img src="cake.png" alt="cake" style="margin-left:auto;margin-right:auto;display:block;margin-top:85px;"> </img>
 	</div>
 
 
@@ -109,31 +109,10 @@
 			var _END_TIME = getTime();
 			console.log(_INIT_TIME);
 			console.log(_END_TIME);
-			//GET ALL THE DATA
-			var _QUESTION_NUMBER = $("#big_number").text();
-			_QUESTION_NUMBER = _QUESTION_NUMBER.trim();
-			var _IDBUTTON = $(this).attr('id') ;
-			saveData("S1",_INIT_TIME,_END_TIME,_QUESTION_NUMBER,_IDBUTTON);
+
+** 			window.location = "2.html";
 		});
-		function saveData(subject,st,et,question_number,awn){
-			var _data = {"subject":subject, "start_time": st, "end_time": et, "question_number": question_number,
-		       				"awn":awn};
 
-			$.ajax({ 
-				url:"http://127.0.0.1:5000/data",
-				type: "POST",
-				data: _data,
-				success: function(data, textStatus, jqXHR)
-				{
-					console.log(data);
-                      window.location.href = '5.html';				},
-				always: function(data,textStatus,jqXHR){
-				
-				}	
-			});
-
-
-		}
 		function getTime(){
 			var d = new Date();
 			var _year = d.getYear() + 1900;

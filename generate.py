@@ -30,5 +30,5 @@ for _dataLine in __DATA:
 
 
         _FILENAME = "%s.html" %( str( _dataLine[0]))
-        with open( "server/static/"+_FILENAME,"w") as _OUTPUT_FILE:
+        with open( _FILENAME,"w") as _OUTPUT_FILE:
                 _OUTPUT_FILE.writelines(_NEWFILECONTENT)
