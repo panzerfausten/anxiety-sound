@@ -20,7 +20,7 @@ for _dataLine in __DATA:
                 _newline = "<div id='big_number'> %s </div> " % (_dataLine[0])
                 _NEWFILECONTENT.append(_newline)
             elif("**" in _line[0:2] ):
-                _newline = "                      window.location = '%s.html';" %( str ( int ( _dataLine[0])+1) )
+                _newline = "                      window.location.href = '%s.html';" %( str ( int ( _dataLine[0])+1) )
                 _NEWFILECONTENT.append(_newline)
             elif(_line[0] == "*"):
                 _newline = "               <button id='play_button' onclick='play_sounds(keyNoteToFreq(%s),keyNoteToFreq(%s),keyNoteToFreq(%s))'>Reproducir </button>" % (_dataLine[1],_dataLine[2],_dataLine[3])
@@ -30,5 +30,5 @@ for _dataLine in __DATA:
 
 
         _FILENAME = "%s.html" %( str( _dataLine[0]))
-        with open( _FILENAME,"w") as _OUTPUT_FILE:
+        with open( "server/static/"+_FILENAME,"w") as _OUTPUT_FILE:
                 _OUTPUT_FILE.writelines(_NEWFILECONTENT)

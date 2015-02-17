@@ -53,12 +53,9 @@
 	</style>
 
 	<div id="formulario">
--	<div id="div_title"> Prueba 2/20</div>
-	</br>
-+	<header> A continuacion escucharas 3 sonidos. Al final de cada reproduccion, se te preguntara si el <b>primer</b> sonido fue igual al <b>ultimo</b>.</header>
-	</br>
-*		<button id="play_button" onclick="play_sounds(keyNoteToFreq(40),keyNoteToFreq(41),keyNoteToFreq(42))">Reproducir </button>
-		<div id="respuesta">
+     <div id='div_title'> Prueba 4/20</div>	</br>
+<div id='big_number'> 4 </div> 	</br>
+               <button id='play_button' onclick='play_sounds(keyNoteToFreq(44),keyNoteToFreq(47),keyNoteToFreq(51))'>Reproducir </button>		<div id="respuesta">
 			<header> Fue el mismo sonido? </header>
 			<button id="awn_yes" class="awn_button" text="yes" >SI</button>
 			<button id="awn_no" class= "awn_button" text="no">NO</button>
@@ -129,8 +126,7 @@
 				success: function(data, textStatus, jqXHR)
 				{
 					console.log(data);
-** 			window.location = "2.html";
-				},
+                      window.location.href = '5.html';				},
 				always: function(data,textStatus,jqXHR){
 				
 				}	

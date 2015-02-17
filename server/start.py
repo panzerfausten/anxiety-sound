@@ -19,6 +19,7 @@ def data():
 		_question_number = request.form['question_number']
 		_awn = request.form['awn']
 		dl = DiskLogger()
+                print [_subject,_question_number,_start_time,_end_time,_awn]
 		dl.write([_subject,_start_time,_end_time,_question_number,_awn])
 		return _start_time
 	else:
